@@ -1,6 +1,7 @@
 import {renderOrderSummary} from "./checkout/orderSummary.js";
 import {renderPaymentSummary} from "./checkout/paymentSummary.js";
 import {cart} from "../data/cart.js"
+import { loadProducts } from "../data/products.js";
 //import "../data/cart.class.js";
 
 let cartQuantity = 0;
@@ -13,5 +14,7 @@ cart.forEach((cartItem) => {
 document.querySelector(".js-return-to-home-link")
 .innerHTML = `${cartQuantity} items`;
 
-renderOrderSummary();
-renderPaymentSummary();
+loadProducts(()=>{
+  renderOrderSummary();
+  renderPaymentSummary();
+});
